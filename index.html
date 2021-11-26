@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examen U3</title>
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+	<script type="text/javascript" language="javascript">
+	    var http_request = false;
+	    
+	    function makeRequest(url) {
+	        http_request = false;
+	        if (window.XMLHttpRequest) { // Mozilla, Safari,...
+	            http_request = new XMLHttpRequest();
+	        }
+
+	        if (!http_request) {
+	            alert('Falla :( No es posible crear una instancia XMLHTTP');
+	            return false;
+	        }
+	        http_request.onreadystatechange = alertContents;//recibe funciones asi como variables
+	        nombre= document.getElementById('nombre').value;
+	        animal= document.getElementById('animal').value;
+	        url="AJAX.php?nombre="+nombre+"&animal="+animal;
+	        http_request.open('GET', url, true); //(metodo,url,no esperar a cargar todo)
+	        http_request.send();
+	    }
+
+	    function alertContents() {
+	        if (http_request.readyState == 4) {
+	            if (http_request.status == 200) {
+	                alert(http_request.responseText);
+	            } else {
+	                alert('Hubo problemas con la petición.');
+	            }
+	        }
+
+	    }
+	</script>
+	<span
+	    style="cursor: pointer; text-decoration: underline"
+	    onclick="makeRequest('test.html')">
+	        Hacer una petición 
+	</span>
+	<br>
+	<section>
+		Nombre:<input type="texto" id="nombre"><br>
+		Animal:<input type="texto" id="animal"><br>
+		<input type="button" name="boton" value="Agregar" onclick="makeRequest('AJAX.php')">
+	</section>
+</body>
+</html>

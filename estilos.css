@@ -1,0 +1,20 @@
+*{/*selector universal*/
+			border: 0;
+			box-sizing: border-box;/*margin y pading lo calcule en el tamaño action haca donde van los datos method*/
+			margin: 0;
+			padding: 0;
+		}
+		table{
+			margin: 2rem auto;/*arriba-abajo, izquierda-derecha*/	
+			text-align: center;
+			width: 60%;
+		}
+		th{
+			background-color: blueviolet;
+
+		}
+		form{
+			border: blue ;
+			margin: ;
+			padding: ;
+		}
